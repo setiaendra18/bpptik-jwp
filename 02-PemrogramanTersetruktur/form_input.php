@@ -12,30 +12,29 @@
 
 		<center><h5 class="text-success">FORM INPUT NILAI MAHASISWA</h5></center>
 		<hr>
-<form action="#">
+<form action="#" class="needs-validation">
   <div class="form-group">
     <label for="nama"><strong>NAMA :</strong></label>
-
-    <input type="text" class="form-control" id="nama" name="nama">
+    <input type="text" class="form-control" id="nama" name="nama" required>
   </div>
 
   <div class="form-group">
     <label for="tugas"><strong>NILAI TUGAS :</strong></label>
-    <input type="text" class="form-control" id="nama" name="nltugas">
+    <input type="text" class="form-control" id="tugas" name="nltugas" required>
   </div>
 
 
   <div class="form-group">
     <label for="uts"><strong>NILAI UTS</strong></label>
-    <input type="text" class="form-control" id="nama" name="nluts">
+    <input type="text" class="form-control" id="nnluts" name="nluts" required>
   </div>
 
 
   <div class="form-group">
     <label for="uas"><strong>NILAI UAS</strong></label>
-    <input type="text" class="form-control" id="nama" name="nluas">
+    <input type="text" class="form-control" id="nluas" name="nluas" required>
   </div>
-  <button type="submit" class="btn btn-success">KIRIM</button>
+  <button type="submit" class="btn btn-success" >KIRIM</button>
   <button type="reset" class="btn btn-danger">RESET</button>
 </div>
 </div>
