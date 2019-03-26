@@ -55,7 +55,7 @@ if (mysqli_num_rows($result) > 0) {
 			  		<td><?= $row["nltotal"] ?></td>
 			  		<td><?= $row["nilai"] ?></td>
 			  		<td>
-			  		<a href="edit.php?id_nilai=<?= $row['id_mahasiswa']?>">EDIT</a>
+			  		<a href="update.php?id_mahasiswa=<?= $row['id_mahasiswa']?>">EDIT</a>
 			  		<a href="delete.php?id_mahasiswa=<?= $row['id_mahasiswa']?>">DELETE</a>
 			  		</td>
 			  	</tr>
