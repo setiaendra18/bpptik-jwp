@@ -12,7 +12,7 @@
 
 		<center><h5 class="text-success">FORM INPUT NILAI MAHASISWA</h5></center>
 		<hr>
-<form action="#" class="needs-validation">
+<form action="proses.php" method="post">
   <div class="form-group">
     <label for="nama"><strong>NAMA :</strong></label>
     <input type="text" class="form-control" id="nama" name="nama" required>
@@ -42,3 +42,5 @@
 
 </body>
 </htmL>
+
+</form>
