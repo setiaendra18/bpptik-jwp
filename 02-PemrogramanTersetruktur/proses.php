@@ -1,56 +1,98 @@
+<htmL>
+<head>
+<title>NILAI MAHASISWA</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</head>
+
+<body>
 <?php
+/*menghubungkan file dengan koneksi ke mysql*/
+include "koneksi.php";
+
+/*Penyimpanan nilai pada variabel , yang dikirimkan melalui form*/
 $nama=$_POST['nama'];
 $nltugas=$_POST['nltugas'];
 $nluts=$_POST['nluts'];
 $nluas=$_POST['nluas'];
 
-function nilaiAkhir($nltugas,$nluts,$nluas)
+/*
+Fungsi Menghitung nilai akhir Mahasiswa, menjumlahkan nilai TUGAS UTS, UAS yang di kalikan dengan pembobotan nilai
+@param integer @nLtugas, $nLuts, $nLuas
+@return integer $nilai_akhir
+*/
+function NilaiAkhir($nltugas,$nluts,$nluas)
 {
 	$nilai_akhir=($nltugas*0.1)+($nluts*0.4)+($nluas*0.5);
 
 	return $nilai_akhir;
 }
-function nilaiHuruf($nama, $nilaiTotal)
+
+/*
+Fungsi mengkonversi nilai akhir/nilai total menjadi nilai huruf berdasarkan kondisi
+@param integer $nilaiTotal
+@param String $nama
+@return string $nama 
+*/
+function NilaiHuruf($nilaiTotal)
 {
 	if($nilaiTotal >=80 && $nilaiTotal<=100)
 	{
-			$hasil="Nama ".$nama." Mendapat nilai A";
+			$hasil="A";
 	}
 	elseif ($nilaiTotal >=70 && $nilaiTotal<80) 
 	{
-		$hasil="Nama ".$nama." Mendapat nilai B";
+			$hasil="B";
 	}
 	elseif ($nilaiTotal >=60 && $nilaiTotal<70) 
 	{
-		$hasil="Nama ".$nama." Mendapat nilai C";
+			$hasil="C";
 	}
 	elseif ($nilaiTotal >=50 && $nilaiTotal<60)
 	{
-		$hasil="Nama ".$nama." Mendapat nilai D";
+			$hasil="D";
 	}
 	elseif ($nilaiTotal <50 && $nilaiTotal>=0)
 	{
-		$hasil="Nama ".$nama." Mendapat nilai E";
+			$hasil="E";
 	}
 	return $hasil;
 }
 
-$nilaiTotal=nilaiAkhir($nltugas,$nluts,$nluas);
-$nilaiHuruf=nilaiHuruf($nama,$nilaiTotal);
+$nilaiTotal=NilaiAkhir($nltugas,$nluts,$nluas);
+$NilaiHuruf=NilaiHuruf($nilaiTotal);
+
+/*Query Memasukan data kedalam basis data */ 
+$sql = "INSERT INTO tbl_mahasiswa (nama, nltugas, nluts,nluas,nltotal,nilai)
+VALUES ('$nama', '$nltugas','$nluts','$nluas','$nilaiTotal','$NilaiHuruf')";
 
 ?>
-<htmL>
-<head>
-	<title>NILAI MAHASISWA</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
 <div class="container">
-<div class="row  justify-content-md-center">
-	<div class="col-md-5"><br>
-		<h5 class="text-success"><?= $nilaiTotal ?></h5>
-		<h5 class="text-primary"><?= $nilaiHuruf ?></h5>
+	<div class="row  justify-content-md-center">
+		<div class="col-md-5">
+			<br>
+			<h5>NILAI TOTAL : <?= $nilaiTotal ?></h5>
+			<h5>NAMA : <?= $nama ?></h5>
+			<h5>NILAI HURUF : <?= $NilaiHuruf ?></h5>
+			<span class="badge badge-success">
+			<?php
+			if (mysqli_query($conn, $sql)) 
+			{
+				echo "Data nilai mahasiswa berhasil di simpan";
+			}
+			else
+			{
+				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+			}
+			?>
+			</span>
+	 		<button onclick="goBack()" class="btn btn-primary">KEMBALI</button>
+	 	
+		</div>
 	</div>
-</div>
 </body>
 </htmL>
