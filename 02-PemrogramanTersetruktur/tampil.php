@@ -3,11 +3,19 @@
 <head>
 	<title>TAMPIL NILAI MAHASISWA</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 	<script>
     function goBack() {
         window.history.back();
     }
-</script>
+	</script>
+	<style type="text/css">
+	div
+	{
+		text-align: center;
+		padding: 10px;
+	}
+	</style>
 </head>
 <body>
 </body>
@@ -23,15 +31,17 @@ if (mysqli_num_rows($result) > 0) {
   		<div class="col-md-9 border border-primary shadow p-3 mb-5 bg-white rounded">
   		<br>
   			<h4>NILAI MAHASISWA</h4>
+
 			<div class="table-responsive">
-  			<table class="table">
+  			<table class="table table-striped">
 			    <th>No.</th>
 			    <th>Nama Mahasiswa</th>
 			    <th>Nilai Tugas</th>
 			    <th>Nilai UTS</th>
 			    <th>Nilai UAS</th>
 			    <th>Nilai Total</th>
-			    <th>Nilai Akhir</th> 
+			    <th>Nilai Akhir</th>
+			     <th>AKSI</th> 
 				<?php
 					$no=1;
 					while($row = mysqli_fetch_assoc($result)) {
@@ -44,6 +54,10 @@ if (mysqli_num_rows($result) > 0) {
 			  		<td><?= $row["nluas"] ?></td>
 			  		<td><?= $row["nltotal"] ?></td>
 			  		<td><?= $row["nilai"] ?></td>
+			  		<td>
+			  		<a href="edit.php?id_nilai=<?= $row['id_mahasiswa']?>">EDIT</a>
+			  		<a href="delete.php?id_mahasiswa=<?= $row['id_mahasiswa']?>">DELETE</a>
+			  		</td>
 			  	</tr>
 			  	<?php
 			  	$no++;

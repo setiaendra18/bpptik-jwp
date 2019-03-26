@@ -7,8 +7,8 @@
 <div class="container margin">
 	<br>
 <div class="row justify-content-md-center">
-	<div class="col-md-5 border border-success shadow p-3 mb-5 bg-white rounded">
-		<center><h5 class="text-success">FORM INPUT NILAI MAHASISWA</h5></center>
+	<div class="col-md-5 border border-primary shadow p-3 mb-5 bg-white rounded">
+		<center><h5>FORM INPUT NILAI MAHASISWA</h5></center>
 		<hr>
     <form action="proses.php" method="post">
         <div class="form-group">
@@ -29,11 +29,10 @@
         </div>
         <button type="submit" class="btn btn-primary">KIRIM</button>
         <button type="reset" class="btn btn-danger">RESET</button>
-            </form>
-           <a href="tampil.php" class="btn btn-warning">LIHAT NILAI</a>
-
+        <a href="tampil.php" class="btn btn-warning">LIHAT NILAI</a>
+  </form>
+       </div>
   </div>
-</div>
 </div>
 </body>
 </htmL>
