@@ -1,0 +1,7 @@
+{
+    "require": {
+        "ircmaxell/random-lib": "^1.2",
+        "nesbot/carbon": "^2.16",
+        "almasaeed2010/adminlte": "^2.4"
+    }
+}
